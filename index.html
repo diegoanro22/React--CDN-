@@ -1,11 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Introducción a React</title>
+    <!-- React -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <!-- ReactDOM -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <!-- Babel para procesar JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
+
 <body>
-    
+    <div id="root"></div>
+    <!-- Codigo JSX -->
+    <script type="text/babel">
+        // Componente funcional de React
+        function Greeting() {
+            return <h1>¡Hola, bienvenido a React!</h1>;
+        }
+        // Renderizar el componente en el DOM
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<Greeting />);
+    </script>
+
 </body>
+
 </html>
