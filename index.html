@@ -17,13 +17,54 @@
     <div id="root"></div>
     <!-- Codigo JSX -->
     <script type="text/babel">
-        // Componente funcional de React
-        function Greeting() {
-            return <h1>¡Hola, bienvenido a React!</h1>;
+        function CommentForm({ onAddComment }) {
+            const [text, setText] = React.useState([]);
+
+            const handleChange = (event) => {
+                setText(event.target.value);
+            };
+
+            const handleSubmit = (event) => {
+                event.preventDefault();
+                if (text.trim() !== '') {
+                    onAddComment(text);
+                    setText('');
+                }
+            };
+
+            return (
+                <form onSubmit={handleSubmit}>
+                    <textarea
+                        value={text}
+                        onChange={handleChange}
+                        placeholder="Escribe tu comentario"
+                    ></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            );
         }
-        // Renderizar el componente en el DOM
+
+        function App() {
+            const [comments, setComments] = React.useState([]);
+
+            const handleAddComment = (comment) => {
+                setComments([...comments, comment]);
+            };
+
+            return (
+                <div>
+                    <h1>Comentarios</h1>
+                    <CommentForm onAddComment={handleAddComment} />
+                    <ul>
+                        {comments.map((comment, index) => (
+                            <li key={index}>{comment}</li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        }
         const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<Greeting />);
+        root.render(<App />);
     </script>
 
 </body>
