@@ -17,6 +17,13 @@
     <div id="root"></div>
     <!-- Codigo JSX -->
     <script type="text/babel">
+
+        function Greeting() {
+            return <h1>¡Hola, bienvenido a React!</h1>;
+        }
+
+
+        // Componente de formulario para agregar comentarios
         function CommentForm({ onAddComment }) {
             const [text, setText] = React.useState("");
 
@@ -39,6 +46,7 @@
                         onChange={handleChange}
                         placeholder="Escribe tu comentario"
                     ></textarea>
+                    <br />
                     <button type="submit">Enviar</button>
                 </form>
             );
@@ -53,7 +61,7 @@
 
             return (
                 <div>
-                    <h1>Comentarios</h1>
+                    <Greeting />
                     <CommentForm onAddComment={handleAddComment} />
                     <ul>
                         {comments.map((comment, index) => (
